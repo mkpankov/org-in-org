@@ -16,3 +16,16 @@
      * Another top level headline
 
 #+END_EXAMPLE
+
+** Visibility cycling
+
+| ~<TAB>~   | Rotate sub-tree between Folded, Children, Subtree states             |
+| ~S-<TAB>~ | Rotate the entire buffer between Overview, Contents, Show All states |
+
+** Motion
+
+| ~C-c C-n~ | Next heading                     |
+| ~C-c C-p~ | Previous heading                 |
+| ~C-c C-f~ | Next heading same level          |
+| ~C-c C-b~ | Previous heading same level      |
+| ~C-c C-u~ | Backward to higher level heading |
