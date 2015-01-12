@@ -1,5 +1,6 @@
 * Emacs Org-Mode Cheat-sheet in Org-Mode
-** Headings and outlines
+** Document structure
+*** Headings and outlines
 
 #+BEGIN_EXAMPLE
 
@@ -17,15 +18,64 @@
 
 #+END_EXAMPLE
 
-** Visibility cycling
+*** Visibility cycling
 
 | ~<TAB>~   | Rotate sub-tree between Folded, Children, Subtree states             |
 | ~S-<TAB>~ | Rotate the entire buffer between Overview, Contents, Show All states |
 
-** Motion
+*** Motion
 
 | ~C-c C-n~ | Next heading                     |
 | ~C-c C-p~ | Previous heading                 |
 | ~C-c C-f~ | Next heading same level          |
 | ~C-c C-b~ | Previous heading same level      |
 | ~C-c C-u~ | Backward to higher level heading |
+
+*** Structure editing
+
+| ~M-<RET>~            | Insert new heading with same level as current            |
+| ~M-S-<RET>~          | Insert new TODO entry with same level as current heading |
+| ~<TAB>~ in new entry | Cycle through reasonable levels                          |
+| ~M-<left>/<right>~   | Promote/demote current heading by one level              |
+| ~M-S-<left>/<right>~ | Promote/demote the current sub-tree by one level         |
+| ~M-S-<up>/<down>~    | Move sub-tree up/down                                    |
+| ~C-c C-w~            | Refile entry or region to a different location           |
+| ~C-x n s/w~          | Narrow buffer to current subtree / widen it again        |
+
+*** Sparse trees
+
+| ~C-c /~   | Enter prompt of sparse tree creation command           |
+| ~C-c / /~ | Create sparse tree by occurrence of regular expression |
+
+*** Plain lists
+
+*Remember* to start list item at second column or later, otherwise it will be
+ treated as first-level heading!
+
+ * Unordered lists :: use '~-~', '~+~' or '~*~' as bullets
+ * Ordered lists :: use '~1.~' or '~1)~' as bullets
+ * Description lists :: use ' ~::~ ' to separate the term from the description
+
+| ~<TAB>~              | Fold list item                                                |
+| ~M-<RET>~            | Insert new item at current level                              |
+| ~M-S-<RET>~          | Insert a new item with a checkbox                             |
+| ~M-S-<up>/<down>~    | Move the item including sub-items up/down                     |
+| ~M-<left>/<right>~   | Decrease/increase the indentation of an item (w/o children)   |
+| ~M-S-<left>/<right>~ | Decrease/increase the indentation of the item (with children) |
+| ~C-c C-c~            | Toggle the checkbox; also make sure the list is consistent    |
+| ~C-c -~              | Cycle the entire list level through different bullets         |
+
+*** Footnotes
+
+#+BEGIN_EXAMPLE
+
+The Org homepage[fn:1] now looks a lot better than it used to.
+...
+[fn:1] The link is: http://orgmode.org
+
+#+END_EXAMPLE
+
+| ~C-c C-x f~     | Jump to definition, first reference, or offer to create a new footnote |
+| ~C-u C-c C-x f~ | A menu of additional footnotes options                                 |
+| ~C-c &~         | Go back after jumping to definition
+| ~C-c C-c~       | Jump between definition and reference (if unique)                      |
