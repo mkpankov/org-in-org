@@ -1,0 +1,18 @@
+* Emacs Org-Mode Cheat-sheet in Org-Mode
+** Headings and outlines
+
+#+BEGIN_EXAMPLE
+
+     * Top level headline
+
+     ** Second level
+
+     *** 3rd level
+         some text
+
+     *** 3rd level
+         more text
+
+     * Another top level headline
+
+#+END_EXAMPLE
