@@ -584,3 +584,131 @@ Match syntax examples:
 | ~C-c a s~ | Use search with special match syntax (like for tags) |
 
 This command also searches files listed in ~org-agenda-text-search-extra-files~.
+
+** Markup for rich export
+
+*** Structural markup elements
+
+**** Document title
+
+: #+TITLE: This is the title of the document
+
+**** Headings and sections
+
+Globally: ~org-export-headline-levels~.
+Per-file:
+: #+OPTIONS: H:4
+
+**** Table of contents
+
+#+BEGIN_EXAMPLE
+#+OPTIONS: toc:2          (only to two levels in TOC)
+#+OPTIONS: toc:nil        (no TOC at all)
+#+END_EXAMPLE
+
+**** Paragraphs
+
+#+BEGIN_EXAMPLE
+#+BEGIN_VERSE
+ Great clouds overhead
+ Tiny black birds rise and fall
+ Snow covers Emacs
+
+ -- AlexSchroeder
+#+END_VERSE
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+#+BEGIN_QUOTE
+Everything should be made as simple as possible,
+but not any simpler -- Albert Einstein
+#+END_QUOTE
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+#+BEGIN_CENTER
+Everything should be made as simple as possible, \\
+but not any simpler
+#+END_CENTER
+#+END_EXAMPLE
+
+**** Emphasis and monospace
+
+~*bold*~, ~/italic/~, ~_underlined_~, ~=code=~, =~verbatim~=, ~+strike-through+~.
+
+**** Comment lines
+
+: # This is a comment
+: * COMMENT This is a commented-out sub-tree
+: #+BEGIN_COMMENT
+: This is a commented-out region
+: #+END_COMMENT
+
+| ~C-c ;~ | Toggle the ~COMMENT~ keyword at the beginning of an entry |
+
+*** Images and tables
+
+Table with caption and id:
+
+#+BEGIN_EXAMPLE
+#+CAPTION: This is the caption for the next table (or link)
+#+NAME:   tbl:basic-data
+   | ... | ...|
+   |-----|----|
+#+END_EXAMPLE
+
+A reference to that table:
+
+: [[tab:basic-data]]
+
+Simple image:
+
+: [[./img/a.jpg]]
+
+Image with caption and id:
+
+#+BEGIN_EXAMPLE
+#+CAPTION: This is the caption for the next figure link (or table)
+#+NAME:   fig:SED-HR4049
+[[./img/a.jpg]]
+#+END_EXAMPLE
+
+*** Literal examples
+
+Examples:
+
+: #+BEGIN_EXAMPLE
+: Some example from a text file.
+: #+END_EXAMPLE
+
+: Here is an example:
+:     : Some example from a text file.
+
+Source code:
+
+#+BEGIN_EXAMPLE
+#+BEGIN_SRC emacs-lisp
+(defun org-xor (a b)
+   "Exclusive or."
+   (if a (not b) b))
+#+END_SRC
+#+END_EXAMPLE
+
+| ~C-c~ ' | Enter/exit editing buffer of source code |
+
+*** Include files
+
+: #+INCLUDE: "~/.emacs" src emacs-lisp
+
+*** Embedded LaTeX
+
+#+BEGIN_EXAMPLE
+Angles are written as Greek letters \alpha, \beta and \gamma.  The mass if
+the sun is M_sun = 1.989 x 10^30 kg.  The radius of the sun is R_{sun} =
+6.96 x 10^8 m.  If $a^2=b$ and $b=2$, then the solution must be either
+$a=+\sqrt{2}$ or $a=-\sqrt{2}$.
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+#+END_EXAMPLE
