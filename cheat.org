@@ -341,7 +341,7 @@ Disable group tags:
 | ~C-c a M~ | Create a global list of tag matches from all agenda files, bug check only TODOs |
 
 | ~+boss+urgent-project1~ | with tags '~boss~' and '~urgent~', but not '~project1~' |
-| ~Kathy\vertSally~       | with tag '~Kathy~' or '~Sally~'                         |
+| Kathy\vert{}Sally       | with tag '~Kathy~' or '~Sally~'                         |
 
 ** Properties
 
