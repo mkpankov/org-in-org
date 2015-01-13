@@ -797,3 +797,55 @@ Embedded LaTeX:
 | ~C-c C-e P f~ | Publish only the current file                                         |
 | ~C-c C-e P a~ | Publish every project                                                 |
 | ~C-u ...~     | With any of the above, force publishing of un-changed files           |
+
+** Working with source code
+
+*** Structure of code blocks
+
+#+BEGIN_EXAMPLE
+#+NAME: <name>
+#+BEGIN_SRC <language> <switches> <header arguments>
+  <body>
+#+END_SRC
+#+END_EXAMPLE
+
+~<name>~ is code block id, ~<language>~ is one of ~emacs-lisp~, ~shell~, ~R~,
+ ~python~, etc., ~<switches>~ control export of the block,
+ ~<header arguments>~ control code block behavior, and
+ ~<body>~ contains the actual source code.
+
+*** Editing source code
+
+| ~C-c~ ' | Edit/exit the code block |
+
+*** Evaluating code blocks
+
+#+BEGIN_EXAMPLE
+#+BEGIN_SRC emacs-lisp
+  (+ 1 2 3 4)
+#+END_SRC
+
+#+RESULTS:
+: 10
+#+END_EXAMPLE
+
+*** Extracting source code
+
+| ~C-c C-v t~ | Extract pure source code files by extracting code from source blocks |
+|             | See also: ~org-babel-expand-src-block~                               |
+|             | Needs ~:tangle~ header argument                                      |
+
+*** Library of Babel
+
+| ~C-c C-v l~ | Load code blocks from Org-Mode files into Library of Babel |
+
+*** Header arguments
+
+ * ~:var~ :: Pass arguments to code blocks
+ * ~:results~ :: See the Guide or Manual
+ * ~:session~ :: Whether to keep a persistent inferior process
+ * ~:tangle~ :: ~:tangle yes~ enables tangling of the block.
+                ~:tangle filename~ specifies alternate file name.
+ * ~:cache~ :: Enable caching of code block results
+ * ~:noweb~ :: ~:noweb yes~ will cause expansion of "noweb" style references
+ * ~:file~ :: ~:file filename~ specifies file name to save results of the block in
