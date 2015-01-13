@@ -490,7 +490,7 @@ To cancel this, set '~org-agenda-skip-scheduled-if-done~'.
 
 **** Capture templates
 
-#+START_EXAMPLE
+#+BEGIN_EXAMPLE
 (setq org-capture-templates
  '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
         "* TODO %?\n  %i\n  %a")
@@ -500,7 +500,7 @@ To cancel this, set '~org-agenda-skip-scheduled-if-done~'.
 
 Capture templates %-escapes:
 
-#+START_EXAMPLE
+#+BEGIN_EXAMPLE
 %a          annotation, normally the link created with org-store-link
 %i          initial content, the region when capture is called with C-u.
 %t          timestamp, date only
