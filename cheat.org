@@ -777,3 +777,23 @@ Embedded LaTeX:
 | ~C-c C-e c f~ | Create iCalendar entries for the current file                             |
 | ~C-c C-e c c~ | Create a single large iCalendar file from all files in ~org-agenda-files~ |
 |               | and write to file given by ~org-icalendar-combined-agenda-file~           |
+
+** Publishing
+
+#+BEGIN_SRC emacs-lisp
+(setq org-publish-project-alist
+      '(("org"
+         :base-directory "~/org/"
+         :publishing-directory "~/public_html"
+         :section-numbers nil
+         :table-of-contents nil
+         :style "<link rel=\"stylesheet\"
+                href=\"../other/mystyle.css\"
+                type=\"text/css\"/>")))
+#+END_SRC
+
+| ~C-c C-e P x~ | Prompt for a specific project and publish all files that belong to it |
+| ~C-c C-e P p~ | Publish the project containing the current file                       |
+| ~C-c C-e P f~ | Publish only the current file                                         |
+| ~C-c C-e P a~ | Publish every project                                                 |
+| ~C-u ...~     | With any of the above, force publishing of un-changed files           |
