@@ -79,3 +79,37 @@ The Org homepage[fn:1] now looks a lot better than it used to.
 | ~C-u C-c C-x f~ | A menu of additional footnotes options                                 |
 | ~C-c &~         | Go back after jumping to definition
 | ~C-c C-c~       | Jump between definition and reference (if unique)                      |
+
+** Tables
+
+#+BEGIN_EXAMPLE
+| Name  | Phone | Age |
+|-------+-------+-----|
+| Peter |  1234 |  17 |
+| Anna  |  4321 |  25 |
+#+END_EXAMPLE
+
+*** Creation and conversion
+
+| ~C-c \vert~            | Convert the active region to table                              |
+| ~\vert- <TAB>~         | Make a separator and move to next cell                          |
+| ~\vert ... \vert<TAB>~ | Continue the table by taking the top row and extending it below |
+
+*** Re-aligning and field motion
+
+| ~C-c C-c~ | Re-align the table w/o moving the cursor      |
+| ~<TAB>~   | Re-align the table and move to the next field |
+| ~S-<TAB>~ | Re-align and move to the previous field       |
+| ~<RET>~   | Re-align and move down to the next row        |
+
+*** Column and row editing
+
+| ~M-<left>/<right>~ | Move the current column left/right                                              |
+| ~M-S-<left>~       | Kill the current column                                                         |
+| ~M-S-<right>~      | Insert a new column to the left of cursor                                       |
+| ~M-<up>/<down>~    | Move the current row up/down                                                    |
+| ~M-S-<up>~         | Kill the current row or horizontal line                                         |
+| ~M-S-<down>~       | Insert a new row above the current row                                          |
+| ~C-c -~            | Insert a horizontal line below the current row                                  |
+| ~C-c <RET>~        | Insert a horizontal line below the current row, and move to row below that line |
+| ~C-c ^~            | Sort the table lines in the region                                              |
