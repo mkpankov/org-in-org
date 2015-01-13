@@ -373,3 +373,99 @@ or globally using ~org-global-properties~, or file-wide:
 
 | ~C-c C-x p~ | Set a property    |
 | ~C-c C-c d~ | Remove a property |
+
+** Dates and Times
+
+*** Time stamps
+
+**** Plain time stamp; Event; Appointment
+
+#+BEGIN_EXAMPLE
+* Meet Peter at the movies
+  <2006-11-01 Wed 19:15>
+* Discussion on climate change
+  <2006-11-02 Thu 20:00-22:00>
+#+END_EXAMPLE
+
+**** Time stamp with repeater interval
+
+#+BEGIN_EXAMPLE
+* Pick up Sam at school
+  <2007-05-16 Wed 12:30 +1w>
+#+END_EXAMPLE
+
+**** Diary-style sexp entries
+
+#+BEGIN_EXAMPLE
+* The nerd meeting on every 2nd Thursday of the month
+  <%%(diary-float t 4 2)>
+#+END_EXAMPLE
+
+**** Time/Date range
+
+#+BEGIN_EXAMPLE
+** Meeting in Amsterdam
+   <2004-08-23 Mon>--<2004-08-26 Thu>
+#+END_EXAMPLE
+
+**** Inactive time stamp
+
+#+BEGIN_EXAMPLE
+* Gillian comes late for the fifth time
+  [2006-11-01 Wed]
+#+END_EXAMPLE
+
+*** Creating time stamps
+
+| ~C-c .~            | Prompt for a date and insert a corresponding time stamp. |
+| ~C-c !~            | Like ~C-c .~, but insert an inactive time stamp          |
+| ~S-<left>/<right>~ | Change date at cursor by one day                         |
+| ~S-<up>/<down>~    | Change the item under the cursor in a time stamp         |
+
+*** Deadlines and scheduling
+
+: * TODO Take the junk out
+:   DEADLINE: <2015-01-14 Ср.>
+
+| ~C-c C-d~ | Insert '~DEADLINE~' along with a stamp |
+
+Another example:
+
+#+BEGIN_EXAMPLE
+*** TODO write article about the Earth for the Guide
+    The editor in charge is [[bbdb:Ford Prefect]]
+    DEADLINE: <2004-02-29 Sun>
+#+END_EXAMPLE
+
+Scheduling:
+
+#+BEGIN_EXAMPLE
+*** TODO Call Trillian for a date on New Years Eve.
+    SCHEDULED: <2004-12-25 Sat>
+#+END_EXAMPLE
+
+With repeater:
+
+#+BEGIN_EXAMPLE
+** TODO Pay the rent
+   DEADLINE: <2005-10-01 Sat +1m>
+#+END_EXAMPLE
+
+Scheduled tasks will be on agenda for following days, until marked '~DONE~'.
+To cancel this, set '~org-agenda-skip-scheduled-if-done~'.
+
+*** Clocking work time
+
+| ~C-c C-x C-i~ | Clock-in                                                |
+| ~C-c C-x C-o~ | Clock-out                                               |
+| ~C-c C-x C-e~ | Update the effort estimate                              |
+| ~C-c C-x C-q~ | Cancel the current clock                                |
+| ~C-c C-x C-r~ | Insert/update a dynamic block containing a clock report |
+
+#+BEGIN_EXAMPLE
+#+BEGIN: clocktable :maxlevel 2 :emphasize nil :scope file
+#+END: clocktable
+#+END_EXAMPLE
+
+| ~C-c C-c~ | Update dynamic block at point   |
+| ~l~       | In agenda or timeline, show log |
