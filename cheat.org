@@ -712,3 +712,68 @@ $a=+\sqrt{2}$ or $a=-\sqrt{2}$.
 x=\sqrt{b}
 \end{equation}
 #+END_EXAMPLE
+
+** Exporting
+
+*** Export options
+
+| ~C-c C-e #~ | Insert template with export options |
+
+#+BEGIN_EXAMPLE
+#+TITLE:       the title to be shown (default is the buffer name)
+#+AUTHOR:      the author (default taken from user-full-name)
+#+DATE:        a date, fixed, or an Org timestamp
+#+EMAIL:       his/her email address (default from user-mail-address)
+#+DESCRIPTION: the page description, e.g. for the XHTML meta tag
+#+KEYWORDS:    the page keywords, e.g. for the XHTML meta tag
+#+LANGUAGE:    language, e.g. ‘en’ (org-export-default-language)
+#+OPTIONS:     H:2 num:t toc:t \n:nil ::t |:t ^:t f:t tex:t ...
+#+END_EXAMPLE
+
+*** The export dispatcher
+
+| ~C-c C-e~ | Dispatcher for export and publishing commands |
+
+*** ASCII/Latin-1/UTF-8 export
+
+| ~C-c C-e t u~ | Export as UTF-8 file |
+
+*** HTML export
+
+| ~C-c C-e h h~ | Export as HTML file                            |
+| ~C-c C-e h o~ | Export as HTML file and open it with a browser |
+
+Embedded HTML:
+
+: #+HTML: Literal HTML code for export
+
+#+BEGIN_EXAMPLE
+#+BEGIN_HTML
+All lines between these markers are exported literally
+#+END_HTML
+#+END_EXAMPLE
+
+*** LaTeX and PDF export
+
+| ~C-c C-e l l~ | Export as LaTeX                                                           |
+| ~C-c C-e l p~ | Export as LaTeX and then process to PDF                                   |
+| ~C-c C-e l o~ | Export as LaTeX and then process to PDF, then open the resulting PDF file |
+
+Changing the LaTeX document class:
+1. Add the class to ~org-latex-classes~.
+1. Set like
+   : #+LATEX_CLASS: myclass
+
+Embedded LaTeX:
+
+#+BEGIN_EXAMPLE
+#+BEGIN_LATEX
+...
+#+END_LATEX
+#+END_EXAMPLE
+
+*** iCalendar export
+
+| ~C-c C-e c f~ | Create iCalendar entries for the current file                             |
+| ~C-c C-e c c~ | Create a single large iCalendar file from all files in ~org-agenda-files~ |
+|               | and write to file given by ~org-icalendar-combined-agenda-file~           |
