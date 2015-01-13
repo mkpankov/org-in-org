@@ -277,3 +277,68 @@ To insert a check-box, type ~[ ]~ in beginning of a plain list item.
 | ~C-c C-c~     | Toggle check-box status            |
 | ~C-u C-c C-c~ | Toggle check-box presence          |
 | ~M-S-<RET>~   | Insert a new item with a check-box |
+
+** Tags
+
+: * TODO Copy the report :work:urgent:
+
+*** Tag inheritance
+
+#+BEGIN_EXAMPLE
+* Meeting with the French group                                        :work:
+** Summary by Frank                                              :boss:notes:
+*** TODO Prepare slides for him                                      :action:
+#+END_EXAMPLE
+
+Set tags for all items in a file to inherit:
+: #+FILETAGS: :Peter:Boss:Secret:
+
+| ~C-c~ | Activate changes in ~FILETAGS~ line |
+
+*** Setting tags
+
+| ~C-c C-q~ | Enter new tags for the current headline                       |
+| ~C-c C-c~ | When cursor is in a headline, this does the same as ~C-c C-q~ |
+
+You may globally specify a hard list of tags with the variable ~org-tag-alist~.
+Or, for a file:
+
+#+BEGIN_EXAMPLE
+#+TAGS: @work @home @tennisclub
+#+TAGS: laptop car pc sailboat
+#+END_EXAMPLE
+
+Tags with keys:
+: (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l)))
+
+Or, for a file:
+: #+TAGS: @work(w)  @home(h)  @tennisclub(t)  laptop(l)  pc(p)
+
+*** Tag groups
+
+: #+TAGS: { @read : @read_book  @read_ebook }
+
+Or, in ~org-tag-alist~:
+
+#+BEGIN_EXAMPLE
+(setq org-tag-alist '((:startgroup . nil)
+                      ("@read" . nil)
+                      (:grouptags . nil)
+                      ("@read_book" . nil)
+                      ("@read_ebook" . nil)
+                      (:endgroup . nil)))
+#+END_EXAMPLE
+
+Disable group tags:
+| temporarily | ~org-toggle-tags-groups~ | ~C-c C-x q~ |
+| completely  | ~org-group-tags~         |             |
+
+*** Tag searches
+
+| ~C-c \~   |                                                                                 |
+| ~C-c / m~ | Create a sparse tree with all the headlines matching a tags search              |
+| ~C-c a m~ | Create a global list of tag matches from all agenda files                       |
+| ~C-c a M~ | Create a global list of tag matches from all agenda files, bug check only TODOs |
+
+| ~+boss+urgent-project1~ | with tags '~boss~' and '~urgent~', but not '~project1~' |
+| ~Kathy\vertSally~       | with tag '~Kathy~' or '~Sally~'                         |
