@@ -469,3 +469,58 @@ To cancel this, set '~org-agenda-skip-scheduled-if-done~'.
 
 | ~C-c C-c~ | Update dynamic block at point   |
 | ~l~       | In agenda or timeline, show log |
+
+** Capture-refile-archive
+
+*** Capture
+
+**** Setting up a capture location
+
+#+BEGIN_EXAMPLE
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+#+END_EXAMPLE
+
+**** Using capture
+
+| ~C-c c~   | Start a capture process   |
+| ~C-c C-c~ | Finish the capture        |
+| ~C-c C-w~ | Refile the entry          |
+| ~C-c C-k~ | Abort the capture process |
+
+**** Capture templates
+
+#+START_EXAMPLE
+(setq org-capture-templates
+ '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+        "* TODO %?\n  %i\n  %a")
+   ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        "* %?\nEntered on %U\n  %i\n  %a")))
+#+END_EXAMPLE
+
+Capture templates %-escapes:
+
+#+START_EXAMPLE
+%a          annotation, normally the link created with org-store-link
+%i          initial content, the region when capture is called with C-u.
+%t          timestamp, date only
+%T          timestamp with date and time
+%u, %U      like the above, but inactive timestamps
+#+END_EXAMPLE
+
+*** Refile and copy
+
+| ~C-c M-x~     | Copy the entry or region at point                            |
+| ~C-c C-w~     | Refile the entry or region at point                          |
+| ~C-u C-c C-w~ | Use the refile interface to jump to a heading                |
+| ~C-u C-u C-w~ | Jump to the location where ~org-refile~ last moved a tree to |
+
+*** Archiving
+
+Customize the location: ~org-archive-location~.
+In-buffer option:
+: #+ARCHIVE: %s_done::
+
+| ~C-c C-x C-a~ | Archive the current entry                       |
+| ~C-c C-x C-s~ | Archive the subtree starting at cursor position |
+| ~C-c $~       | Same as above                                   |
