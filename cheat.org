@@ -524,3 +524,63 @@ In-buffer option:
 | ~C-c C-x C-a~ | Archive the current entry                       |
 | ~C-c C-x C-s~ | Archive the subtree starting at cursor position |
 | ~C-c $~       | Same as above                                   |
+
+** Agenda views
+
+*** Agenda files
+
+Customize files to collect agenda items from: ~org-agenda-files~.
+
+| ~C-c [~  | Add current file to the front of the list of agenda files |
+| ~C-c ]~  | Remove current file from the list of agenda files         |
+| ~C-~ ,   | Cycle through agenda file list                            |
+
+*** Agenda dispatcher
+
+| ~a~     | The calendar-like agenda              |
+| ~t / T~ | A list of all TODO items              |
+| ~m / M~ | A list of headlines                   |
+| ~L~     | The timeline view                     |
+| ~s~     | A list of entries selected by pattern |
+
+*** Built-in agenda views
+
+**** Weekly/daily agenda
+
+| ~C-c a a~ | Compile an agenda for the current week |
+
+#+BEGIN_EXAMPLE
+* Birthdays and similar stuff
+#+CATEGORY: Holiday
+%%(org-calendar-holiday)   ; special function for holiday names
+#+CATEGORY: Ann
+%%(diary-anniversary  5 14 1956)1 Arthur Dent is %d years old
+%%(diary-anniversary 10  2 1869) Mahatma Gandhi would be %d years old
+#+END_EXAMPLE
+
+To add appointments to Emacs notification facility, use ~org-agenda-to-appt~.
+
+**** Global TODO list
+
+| ~C-c a t~ | Show the global TODO list                                     |
+| ~C-c a T~ | Like the above, but allows selection of specific TODO keyword |
+
+**** Matching tags and properties
+
+| ~C-c a m~ | Produce a list of all headlines that match a given set of tags |
+| ~C-c a M~ | Like above, but only select headlines that are also TODO items |
+
+Match syntax examples:
+: +work-boss
+: work|laptop
+: work|laptop+night
+
+**** Time-line
+
+| ~C-c a L~ | Show a time-sorted view of the Org file, with all time-stamped items |
+
+**** Search view
+
+| ~C-c a s~ | Use search with special match syntax (like for tags) |
+
+This command also searches files listed in ~org-agenda-text-search-extra-files~.
