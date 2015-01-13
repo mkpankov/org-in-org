@@ -849,3 +849,20 @@ Embedded LaTeX:
  * ~:cache~ :: Enable caching of code block results
  * ~:noweb~ :: ~:noweb yes~ will cause expansion of "noweb" style references
  * ~:file~ :: ~:file filename~ specifies file name to save results of the block in
+
+** Miscellaneous
+
+*** Completion
+
+| ~M-<TAB>~ | Auto-complete current item |
+
+*** Clean view
+
+To enable, use ~org-indent-mode~ at view time,
+ customize ~org-startup-indented~ to enable it globally, or per-file:
+
+: #+STARTUP: indent
+
+To get hard spaces and indentation help from Emacs, use:
+
+: #+STARTUP: hidestars odd
