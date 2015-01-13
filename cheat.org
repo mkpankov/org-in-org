@@ -174,3 +174,106 @@ May contain descriptive text:
 [[file:~/xx.org::My Target]]                Find ‘<<My Target>>’
 [[file:~/xx.org::#my-custom-id]]            Find entry with custom id
 #+END_EXAMPLE
+
+** Todo Items
+
+*** Using TODO states
+
+: *** TODO Write letter to Sam Fortune
+
+| ~C-c C-t~          | Rotate the TODO state                         |
+| ~S-<right>/<left>~ | Select the following/preceding TODO state     |
+| ~C-c / t~          | View TODO items in a sparse tree              |
+| ~C-c a t~          | Show the global TODO list                     |
+| ~S-M-<RET>~        | Insert a new TODO entry below the current one |
+
+*** Multi-state workflows
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+#+END_SRC
+or
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+#+END_SRC
+
+TODO keywords for a single file:
+#+BEGIN_EXAMPLE
+#+TODO: TODO(t) | DONE(d)
+#+TODO: REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)
+#+TODO: | CANCELED(c)
+#+END_EXAMPLE
+
+*** Logging progress
+
+**** Closing items
+
+: (setq org-log-done 'time)
+
+or
+
+: (setq org-log-done 'note)
+
+In-buffer settings:
+
+: #+STARTUP: logdone
+
+or
+
+: #+STARTUP: lognotedone
+
+**** Tracking TODO state changes
+
+In TODO states specification:
+
+: #+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)
+
+| ~!~ | timestamp |
+| ~@~ | note      |
+
+*** Priorities
+
+: *** TODO [#A] Write letter to Sam Fortune
+
+Org mode supports three priorities: '~A~', '~B~' and '~C~', '~A~' being
+ the highest.
+
+| ~C-c~ ~,~       | Set the priority of the current headline       |
+| ~S-<up>/<down>~ | Increase/decrease priority of current headline |
+
+*** Breaking down tasks
+
+To break down a task headline, insert either '~[/]~' or '~[%]~' anywhere in
+ the headline.
+
+#+BEGIN_EXAMPLE
+* Organize Party [33%]
+** TODO Call people [1/2]
+*** TODO Peter
+*** DONE Sarah
+** TODO Buy food
+** DONE Talk to neighbor
+#+END_EXAMPLE
+
+| ~C-c C-c~ | Update the cookie with progress |
+
+*** Check-boxes
+
+To insert a check-box, type ~[ ]~ in beginning of a plain list item.
+
+#+BEGIN_EXAMPLE
+* TODO Organize party [1/3]
+  - [-] call people [1/2]
+    - [ ] Peter
+    - [X] Sarah
+  - [X] order food
+  - [ ] think about what music to play
+#+END_EXAMPLE
+
+| ~C-c C-c~     | Toggle check-box status            |
+| ~C-u C-c C-c~ | Toggle check-box presence          |
+| ~M-S-<RET>~   | Insert a new item with a check-box |
