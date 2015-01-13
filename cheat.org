@@ -113,3 +113,64 @@ The Org homepage[fn:1] now looks a lot better than it used to.
 | ~C-c -~            | Insert a horizontal line below the current row                                  |
 | ~C-c <RET>~        | Insert a horizontal line below the current row, and move to row below that line |
 | ~C-c ^~            | Sort the table lines in the region                                              |
+
+** Hyperlinks
+
+*** Link format
+
+: [[link][description]]
+
+or, alternatively,
+
+: [[link]]
+
+*** Internal links
+
+: [[#my-custom-id]]
+links to the entry with ~CUSTOM_ID~ property '~my-custom-id~'.
+
+: [[My Target]]
+or
+: [[My Target][Find my target]]
+lead to a text search in the current file for the target '~<<My Target>>~'.
+
+*** External links
+
+#+BEGIN_EXAMPLE
+     http://www.astro.uva.nl/~dominik          on the web
+     file:/home/dominik/images/jupiter.jpg     file, absolute path
+     /home/dominik/images/jupiter.jpg          same as above
+     file:papers/last.pdf                      file, relative path
+     file:projects.org                         another Org file
+     docview:papers/last.pdf::NNN              open file in doc-view mode at page NNN
+     id:B7423F4D-2E8A-471B-8810-C40F074717E9   Link to heading by ID
+     news:comp.emacs                           Usenet link
+     mailto:adent@galaxy.net                   Mail link
+     vm:folder                                 VM folder link
+     vm:folder#id                              VM message link
+     wl:folder#id                              WANDERLUST message link
+     mhe:folder#id                             MH-E message link
+     rmail:folder#id                           RMAIL message link
+     gnus:group#id                             Gnus article link
+     bbdb:R.*Stallman                          BBDB link (with regexp)
+     irc:/irc.com/#emacs/bob                   IRC link
+     info:org:External%20links                 Info node link (with encoded space)
+#+END_EXAMPLE
+
+May contain descriptive text:
+: [[http://www.gnu.org/software/emacs/][GNU Emacs]]
+
+*** Handling links
+
+| ~C-c l~   | Store a link to the current location |
+| ~C-c C-l~ | Insert or edit a link                |
+| ~C-c C-o~ | Open link at point                   |
+| ~C-c &~   | Jump back to a recorded position     |
+
+*** Targeted links
+
+#+BEGIN_EXAMPLE
+[[file:~/code/main.c::255]]                 Find line 255
+[[file:~/xx.org::My Target]]                Find ‘<<My Target>>’
+[[file:~/xx.org::#my-custom-id]]            Find entry with custom id
+#+END_EXAMPLE
