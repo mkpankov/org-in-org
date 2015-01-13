@@ -342,3 +342,34 @@ Disable group tags:
 
 | ~+boss+urgent-project1~ | with tags '~boss~' and '~urgent~', but not '~project1~' |
 | ~Kathy\vertSally~       | with tag '~Kathy~' or '~Sally~'                         |
+
+** Properties
+
+#+BEGIN_EXAMPLE
+* CD collection
+** Classic
+*** Goldberg Variations
+    :PROPERTIES:
+    :Title:     Goldberg Variations
+    :Composer:  J.S. Bach
+    :Publisher: Deutsche Grammophon
+    :NDisks:    1
+    :END:
+#+END_EXAMPLE
+
+Inherited properties:
+
+#+BEGIN_EXAMPLE
+* CD collection
+  :PROPERTIES:
+  :NDisks_ALL:  1 2 3 4
+  :Publisher_ALL: "Deutsche Grammophon" Philips EMI
+  :END:
+#+END_EXAMPLE
+
+or globally using ~org-global-properties~, or file-wide:
+
+: #+PROPERTY: NDisks_ALL 1 2 3 4
+
+| ~C-c C-x p~ | Set a property    |
+| ~C-c C-c d~ | Remove a property |
