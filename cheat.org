@@ -251,12 +251,12 @@ To break down a task headline, insert either '~[/]~' or '~[%]~' anywhere in
  the headline.
 
 #+BEGIN_EXAMPLE
-* Organize Party [33%]
-** TODO Call people [1/2]
-*** TODO Peter
-*** DONE Sarah
-** TODO Buy food
-** DONE Talk to neighbor
+    * Organize Party [33%]
+    ** TODO Call people [1/2]
+    *** TODO Peter
+    *** DONE Sarah
+    ** TODO Buy food
+    ** DONE Talk to neighbor
 #+END_EXAMPLE
 
 | ~C-c C-c~ | Update the cookie with progress |
@@ -266,12 +266,12 @@ To break down a task headline, insert either '~[/]~' or '~[%]~' anywhere in
 To insert a check-box, type ~[ ]~ in beginning of a plain list item.
 
 #+BEGIN_EXAMPLE
-* TODO Organize party [1/3]
-  - [-] call people [1/2]
-    - [ ] Peter
-    - [X] Sarah
-  - [X] order food
-  - [ ] think about what music to play
+    * TODO Organize party [1/3]
+      - [-] call people [1/2]
+        - [ ] Peter
+        - [X] Sarah
+      - [X] order food
+      - [ ] think about what music to play
 #+END_EXAMPLE
 
 | ~C-c C-c~     | Toggle check-box status            |
@@ -285,9 +285,9 @@ To insert a check-box, type ~[ ]~ in beginning of a plain list item.
 *** Tag inheritance
 
 #+BEGIN_EXAMPLE
-* Meeting with the French group                                        :work:
-** Summary by Frank                                              :boss:notes:
-*** TODO Prepare slides for him                                      :action:
+    * Meeting with the French group                                        :work:
+    ** Summary by Frank                                              :boss:notes:
+    *** TODO Prepare slides for him                                      :action:
 #+END_EXAMPLE
 
 Set tags for all items in a file to inherit:
@@ -346,25 +346,25 @@ Disable group tags:
 ** Properties
 
 #+BEGIN_EXAMPLE
-* CD collection
-** Classic
-*** Goldberg Variations
-    :PROPERTIES:
-    :Title:     Goldberg Variations
-    :Composer:  J.S. Bach
-    :Publisher: Deutsche Grammophon
-    :NDisks:    1
-    :END:
+    * CD collection
+    ** Classic
+    *** Goldberg Variations
+        :PROPERTIES:
+        :Title:     Goldberg Variations
+        :Composer:  J.S. Bach
+        :Publisher: Deutsche Grammophon
+        :NDisks:    1
+        :END:
 #+END_EXAMPLE
 
 Inherited properties:
 
 #+BEGIN_EXAMPLE
-* CD collection
-  :PROPERTIES:
-  :NDisks_ALL:  1 2 3 4
-  :Publisher_ALL: "Deutsche Grammophon" Philips EMI
-  :END:
+    * CD collection
+      :PROPERTIES:
+      :NDisks_ALL:  1 2 3 4
+      :Publisher_ALL: "Deutsche Grammophon" Philips EMI
+      :END:
 #+END_EXAMPLE
 
 or globally using ~org-global-properties~, or file-wide:
@@ -381,38 +381,38 @@ or globally using ~org-global-properties~, or file-wide:
 **** Plain time stamp; Event; Appointment
 
 #+BEGIN_EXAMPLE
-* Meet Peter at the movies
-  <2006-11-01 Wed 19:15>
-* Discussion on climate change
-  <2006-11-02 Thu 20:00-22:00>
+    * Meet Peter at the movies
+      <2006-11-01 Wed 19:15>
+    * Discussion on climate change
+      <2006-11-02 Thu 20:00-22:00>
 #+END_EXAMPLE
 
 **** Time stamp with repeater interval
 
 #+BEGIN_EXAMPLE
-* Pick up Sam at school
-  <2007-05-16 Wed 12:30 +1w>
+    * Pick up Sam at school
+      <2007-05-16 Wed 12:30 +1w>
 #+END_EXAMPLE
 
 **** Diary-style sexp entries
 
 #+BEGIN_EXAMPLE
-* The nerd meeting on every 2nd Thursday of the month
-  <%%(diary-float t 4 2)>
+    * The nerd meeting on every 2nd Thursday of the month
+      <%%(diary-float t 4 2)>
 #+END_EXAMPLE
 
 **** Time/Date range
 
 #+BEGIN_EXAMPLE
-** Meeting in Amsterdam
-   <2004-08-23 Mon>--<2004-08-26 Thu>
+    ** Meeting in Amsterdam
+       <2004-08-23 Mon>--<2004-08-26 Thu>
 #+END_EXAMPLE
 
 **** Inactive time stamp
 
 #+BEGIN_EXAMPLE
-* Gillian comes late for the fifth time
-  [2006-11-01 Wed]
+    * Gillian comes late for the fifth time
+      [2006-11-01 Wed]
 #+END_EXAMPLE
 
 *** Creating time stamps
@@ -432,23 +432,23 @@ or globally using ~org-global-properties~, or file-wide:
 Another example:
 
 #+BEGIN_EXAMPLE
-*** TODO write article about the Earth for the Guide
-    The editor in charge is [[bbdb:Ford Prefect]]
-    DEADLINE: <2004-02-29 Sun>
+    *** TODO write article about the Earth for the Guide
+        The editor in charge is [[bbdb:Ford Prefect]]
+        DEADLINE: <2004-02-29 Sun>
 #+END_EXAMPLE
 
 Scheduling:
 
 #+BEGIN_EXAMPLE
-*** TODO Call Trillian for a date on New Years Eve.
-    SCHEDULED: <2004-12-25 Sat>
+    *** TODO Call Trillian for a date on New Years Eve.
+        SCHEDULED: <2004-12-25 Sat>
 #+END_EXAMPLE
 
 With repeater:
 
 #+BEGIN_EXAMPLE
-** TODO Pay the rent
-   DEADLINE: <2005-10-01 Sat +1m>
+    ** TODO Pay the rent
+       DEADLINE: <2005-10-01 Sat +1m>
 #+END_EXAMPLE
 
 Scheduled tasks will be on agenda for following days, until marked '~DONE~'.
@@ -550,12 +550,12 @@ Customize files to collect agenda items from: ~org-agenda-files~.
 | ~C-c a a~ | Compile an agenda for the current week |
 
 #+BEGIN_EXAMPLE
-* Birthdays and similar stuff
-#+CATEGORY: Holiday
-%%(org-calendar-holiday)   ; special function for holiday names
-#+CATEGORY: Ann
-%%(diary-anniversary  5 14 1956)1 Arthur Dent is %d years old
-%%(diary-anniversary 10  2 1869) Mahatma Gandhi would be %d years old
+    * Birthdays and similar stuff
+    #+CATEGORY: Holiday
+    %%(org-calendar-holiday)   ; special function for holiday names
+    #+CATEGORY: Ann
+    %%(diary-anniversary  5 14 1956)1 Arthur Dent is %d years old
+    %%(diary-anniversary 10  2 1869) Mahatma Gandhi would be %d years old
 #+END_EXAMPLE
 
 To add appointments to Emacs notification facility, use ~org-agenda-to-appt~.
